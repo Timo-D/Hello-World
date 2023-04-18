@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tree Example</title>
+	<style>
+        
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          padding-left: 1.5em;
+        }
+
+        li {
+          position: relative;
+          margin: 0.25em;
+          padding: 0;
+          padding-left: 0em;
+        }
+
+        li label {
+          display: inline-block;
+          margin: 0.25em;
+          padding: 0;
+        }
+
+        li input[type="radio"] {
+		      /*display: none;*/
+          content:"";
+          position: absolute;
+          left: -1.5em;
+          top: 50%;
+          transform: translateY(-50%);
+          appearance: none;
+          -webkit-appearance: none;
+          width: 1.5em;
+          height: 1.5em;
+          border-radius: 50%;
+          /* border: 2px solid black; */
+          outline: none;
+          cursor: pointer;
+          background-color: transparent;
+        }
+
+        li input[type="radio"]:before {
+          content: "⛶";
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        li input[type="radio"]:checked:before {
+          content: "⚓";
+        }
+
+        li details summary {
+          cursor: pointer;
+          padding-left: 1.5em;
+          position: relative;
+          list-style: none;
+        }
+        
+        li details summary::-webkit-details-marker {
+          display: none;
+        }
+
+        li details summary:before {
+          content: "▶️";
+          display: inline-block;
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        li details[open] summary:before {
+          content: "🔽";
+        }
+
+        li details > ul {
+          margin-left: 1.5em;
+        }
+</style>
+
+</head>
+<body>
+
+	<p>Click the button to create a tree.</p>
+
+	<button onclick="createTree()">Create Tree</button>
+    <button onclick="saveSelectedItem()">Save</button>
+
+	<p><b>Note:</b> The details element is not supported in Internet Explorer or Safari 5 and earlier versions.</p>
+
+	<script>
+    
+    var tree = {
+  "id": "root",
+  "label": "MBgV",
+  "children": [
+    {
+      "id": "0000",
+      "label": "Baugruppe 0000",
+      "parent": "root",
+      "children": [
+        {
+          "id": "0100",
+          "label": "Baugruppe 0100",
+          "parent": "0000",
+          "children": []
+        },
+        {
+          "id": "0200",
+          "label": "Baugruppe 0200",
+          "parent": "0000",
+          "children": []
+        },
+        {
+          "id": "0300",
+          "label": "Baugruppe 0300",
+          "parent": "0000",
+          "children": []
+        },
+        {
+          "id": "0400",
+          "label": "Baugruppe 0400",
+          "parent": "0000",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "1000",
+      "label": "Baugruppe 1000",
+      "parent": "root",
+      "children": [
+        {
+          "id": "1100",
+          "label": "Baugruppe 1100",
+          "parent": "1000",
+          "children": []
+        },
+        {
+          "id": "1200",
+          "label": "Baugruppe 1200",
+          "parent": "1000",
+          "children": []
+        },
+        {
+          "id": "1300",
+          "label": "Baugruppe 1300",
+          "parent": "1000",
+          "children": []
+        },
+        {
+          "id": "1400",
+          "label": "Baugruppe 1400",
+          "parent": "1000",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "2000",
+      "label": "Baugruppe 2000",
+      "parent": "root",
+      "children": [
+        {
+          "id": "2100",
+          "label": "Baugruppe 2100",
+          "parent": "2000",
+          "children": []
+        },
+        {
+          "id": "2200",
+          "label": "Baugruppe 2200",
+          "parent": "2000",
+          "children": []
+        },
+        {
+          "id": "2300",
+          "label": "Baugruppe 2300",
+          "parent": "2000",
+          "children": []
+        },
+        {
+          "id": "2400",
+          "label": "Baugruppe 2400",
+          "parent": "2000",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "3000",
+      "label": "Baugruppe 3000",
+      "parent": "root",
+      "children": [
+        {
+          "id": "3100",
+          "label": "Baugruppe 3100",
+          "parent": "3000",
+          "children": []
+        },
+        {
+          "id": "3200",
+          "label": "Baugruppe 3200",
+          "parent": "3000",
+          "children": []
+        },
+        {
+          "id": "3300",
+          "label": "Baugruppe 3300",
+          "parent": "3000",
+          "children": []
+        },
+        {
+          "id": "3400",
+          "label": "Baugruppe 3400",
+          "parent": "3000",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "4000",
+      "label": "Baugruppe 4000",
+      "parent": "root",
+      "children": [
+        {
+          "id": "4100",
+          "label": "Baugruppe 4100",
+          "parent": "4000",
+          "children": []
+        },
+        {
+          "id": "4200",
+          "label": "Baugruppe 4200",
+          "parent": "4000",
+          "children": []
+        },
+        {
+          "id": "4300",
+          "label": "Baugruppe 4300",
+          "parent": "4000",
+          "children": []
+        },
+        {
+          "id": "4400",
+          "label": "Baugruppe 4400",
+          "parent": "4000",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "5000",
+      "label": "Baugruppe 5000",
+      "parent": "root",
+      "children": [
+        {
+          "id": "5100",
+          "label": "Baugruppe 5100",
+          "parent": "5000",
+          "children": []
+        },
+        {
+          "id": "5200",
+          "label": "Baugruppe 5200",
+          "parent": "5000",
+          "children": []
+        },
+        {
+          "id": "5300",
+          "label": "Baugruppe 5300",
+          "parent": "5000",
+          "children": []
+        },
+        {
+          "id": "5400",
+          "label": "Baugruppe 5400",
+          "parent": "5000",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "6000",
+      "label": "Baugruppe 6000",
+      "parent": "root",
+      "children": [
+        {
+          "id": "6100",
+          "label": "Baugruppe 6100",
+          "parent": "6000",
+          "children": []
+        },
+        {
+          "id": "6200",
+          "label": "Baugruppe 6200",
+          "parent": "6000",
+          "children": []
+        },
+        {
+          "id": "6300",
+          "label": "Baugruppe 6300",
+          "parent": "6000",
+          "children": []
+        },
+        {
+          "id": "6400",
+          "label": "Baugruppe 6400",
+          "parent": "6000",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "7000",
+      "label": "Baugruppe 7000",
+      "parent": "root",
+      "children": [
+        {
+          "id": "7100",
+          "label": "Baugruppe 7100",
+          "parent": "7000",
+          "children": []
+        },
+        {
+          "id": "7200",
+          "label": "Baugruppe 7200",
+          "parent": "7000",
+          "children": []
+        },
+        {
+          "id": "7300",
+          "label": "Baugruppe 7300",
+          "parent": "7000",
+          "children": []
+        },
+        {
+          "id": "7400",
+          "label": "Baugruppe 7400",
+          "parent": "7000",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "8000",
+      "label": "Baugruppe 8000",
+      "parent": "root",
+      "children": [
+        {
+          "id": "8100",
+          "label": "Baugruppe 8100",
+          "parent": "8000",
+          "children": []
+        },
+        {
+          "id": "8200",
+          "label": "Baugruppe 8200",
+          "parent": "8000",
+          "children": []
+        },
+        {
+          "id": "8300",
+          "label": "Baugruppe 8300",
+          "parent": "8000",
+          "children": []
+        },
+        {
+          "id": "8400",
+          "label": "Baugruppe 8400",
+          "parent": "8000",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "9000",
+      "label": "Baugruppe 9000",
+      "parent": "root",
+      "children": [
+        {
+          "id": "9100",
+          "label": "Baugruppe 9100",
+          "parent": "9000",
+          "children": []
+        },
+        {
+          "id": "9200",
+          "label": "Baugruppe 9200",
+          "parent": "9000",
+          "children": []
+        },
+        {
+          "id": "9300",
+          "label": "Baugruppe 9300",
+          "parent": "9000",
+          "children": []
+        },
+        {
+          "id": "9400",
+          "label": "Baugruppe 9400",
+          "parent": "9000",
+          "children": []
+        }
+      ]
+    }
+  ]
+ };
+    
+    function createTree() {
+          var clearButton = document.createElement("button");
+          clearButton.textContent = "Clear Storage";
+          clearButton.onclick = function() {
+            sessionStorage.clear();
+            location.reload();
+          };
+          document.body.insertBefore(clearButton, document.body.firstChild);
+			var html = buildTreeHTML(tree);
+			var newDiv = document.createElement("div");
+			newDiv.innerHTML = html;
+			var topElement = document.getElementsByTagName("body")[0];
+			topElement.insertBefore(newDiv, topElement.firstChild);
+
+			var radios = document.querySelectorAll("input[type='radio']");
+			for (var i = 0; i < radios.length; i++) {
+				radios[i].addEventListener("change", function() {
+					var allRadios = document.querySelectorAll("input[type='radio']");
+					for (var j = 0; j < allRadios.length; j++) {
+						allRadios[j].nextElementSibling.style.color = "";
+						allRadios[j].nextElementSibling.style.fontWeight = "";
+					}
+					if (this.checked) {
+						this.nextElementSibling.style.color = "green";
+						this.nextElementSibling.style.fontWeight = "bold";
+					}
+				});
+			}
+		}
+
+		function buildTreeHTML(tree) {
+          
+          if (tree.parent == null){
+          	var html = '<details open>';
+          	html += '<summary><label><span>' + tree.label + '</span></label></summary>';
+          }else{
+          	var html = '<details>';
+          	html += '<summary style="color: grey;"><label><input type="radio" name="tree" value="' + tree.id + '"><span>' + tree.label + '</span></label></summary>';
+			}
+          if (tree.children.length > 0) {
+            html += '<ul>';
+            for (var i = 0; i < tree.children.length; i++) {
+              html += '<li>';
+              html += buildTreeHTML(tree.children[i]);
+              html += '</li>';
+            }
+            html += '</ul>';
+          }
+
+          html += '</details>';
+          return html;
+        }
+        
+        function saveSelectedItem() {
+          var selectedItem = document.querySelector("input[type='radio']:checked").parentNode;
+          selectedItem.style.color = "black";
+          sessionStorage.setItem("selectedItem", selectedItem.id);
+        }
+
+        var selectedItem = sessionStorage.getItem("selectedItem");
+        if (selectedItem) {
+          document.getElementById(selectedItem).style.color = "black";
+        }
+	</script>
+
+</body>
+</html>
+    
+    
+    
+    
