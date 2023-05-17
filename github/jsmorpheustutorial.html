@@ -1,0 +1,108 @@
+//To Do: Funktionen schreiben; externes Array in Funktion nutzen, geht das?
+
+<html>
+    <head>
+<title>Title</title>
+<meta name="viewpoint" content="with=device-with", inital-scale="2.0"/>
+<link rel="stylesheet" type="text/css" hrf="style3.css">
+    </head>
+<body>
+<div id="div1">
+    <h1 id="headline">Animal Kingdom</h1>
+    <p> Ein Text über Pfoten und so. Wer hat die Kokosnuss geklaut?
+    </p>
+</div>
+
+<script>
+    var affe = 44, pferd = 3, kuh = "Zwerghuhn";
+    var bool = Boolean(42==234); //Vergleiche in Variablen speichern
+    var ostern=(67 == 67)? true: false; //Bedingung
+    var streichelzoo = ["T-Rex", "Eichhörnchen", "Clownfisch", kuh];//Array
+    var grafzahl = ["C", "E", "B", "A", "8"];//Array
+    var zottelzahl;
+
+    function addieren(v,w,q){
+        var z=v*w*q;
+        return z;
+    }
+    
+    function neuestier(a,b){
+    //tiere.push("a","b"); 
+    var neu = [a, b]
+
+    return "hoho";
+    //return neu;
+    //return window.alert("Neuen Zoobewohner mit Namen"+ b + "hinzugefügt.");
+    //return document.write(tiere.join('-'));
+}
+
+    // 2D Array
+    var tiere = [
+            ["Tier","Name"],
+            ["Schildkröte","Frodo"],
+            ["Löwe","Simba"],
+            ["Faultier","Bilbo"],
+            ["Esel","Gimli"],
+            ["Meerschwein","Werner"],
+            ["T-Rex","Ursula"],
+            ["Eichhörnchen","Legolas"],
+            ["Fisch","Nemo"],
+            [kuh,"Arwen"]
+    ];
+    
+//Tiere als Liste ausgeben lassen
+    function zoo(){
+    for (let y=0; y < tiere.length; y++){
+           var innerArrayLength = tiere[y].length;
+           for(let k = 0; k < innerArrayLength; k++) {
+            document.write(tiere[y][k]);
+            if (k==1){
+                document.write('<br>');
+            }else if (k==0){
+                document.write(' ');
+            }
+        }
+        //document.write("<h2>Tier"+ (y+1)+" </h2>");
+            //for(var namen in tiere[k]) {
+            //document.write(tiere[k][namen]+"<br>");
+     }
+}
+
+
+
+    document.write(ostern); //Bool abfragen
+
+    if(ostern==true){
+            window.alert("Hase hoppelt durch den Garten.");     
+    }else{
+            window.alert("Elefanten jagen durch die Stadt.");
+    }
+
+    if(affe==45){
+            document.write("<p>Ein Affe isst eine Banane.</p>");     
+    } else if(pferd == 8){
+            document.write("<p>Ein Pferd kommt um die Ecke.</p>");
+    } else if ((affe+pferd)==47){
+        document.write("<p> Hier muss wohl ein Nest sein.</p>");
+    }
+
+    //document.write(streichelzoo[0]);
+    document.write(streichelzoo.join("-"));
+    window.alert(grafzahl.join("#"));
+    //Array sortieren und in neue Var schreiben
+    grafzahl.sort(); //grafzahl.reverse); //sort ändert das Array, sodass es ein keine neue Variable geschrieben werden muss
+    //window.alert(grafzahl.join("#"));
+    document.write(grafzahl.join("#")+'<br>');
+    //document.write(zottelzahl.join("#"));
+    //document.write(tiere);
+    zoo();
+    
+//Funktionen testen
+    window.alert(addieren(1,3,4));
+    window.alert(neuestier(Maus,Saruman));
+
+    
+    //console.table(tiere);
+</script>
+</body>
+</html>

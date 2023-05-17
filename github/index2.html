@@ -1,0 +1,52 @@
+<body>
+    <div id="div1">
+        <h1 id="headline">Corona Daten auslesen/filtern</h1>
+        <p> 1. Auf Daten in einer .jason Datei aus dem selben Ordner zugreifen.
+        </p>
+        <p> 2. Nach allen Tagen filtern, an welchen mehr als 1000 Menschen an Corona gestorben sind.
+        </p>
+    </div>
+
+    <script>
+    //1. Auf Daten in einer .jason Datei aus dem selben Ordner zugreifen.
+    /*   
+    function loadJSON(file,callback) {   
+        var xobj = new XMLHttpRequest();
+         xobj.overrideMimeType('application/json');
+         xobj.open('GET', file, true); 
+         xobj.onreadystatechange = function () {
+          if (xobj.readyState == 4 && xobj.status == '200') {
+             // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+          callback(xobj.responseText);
+     }
+  };
+  xobj.send(null);  
+}
+
+
+loadJSON('C:\Users\Svenja\JSTutorials\jsJASON\timeseries.json', function(text){
+    var data = JSON.parse(text);
+    console.log(data);
+});
+*/
+
+
+  //fetch('C:\Users\Svenja\JSTutorials\jsJASON\timeseries.json')
+  fetch('timeseries.json')
+  .then(response => response.json())
+  .then(data => {
+    const obj = [];
+    data.features.map(val => {
+        obj.push(val.properties);
+      //obj.push(val.properties.date);
+    });
+
+    const result = obj[0].date //"2020-1-22"
+    //console.log('!', obj); // ["2020-1-22", "2020-1-23", "2020-1-24"]
+  });
+
+
+
+    </script>
+    </body>
+    </html>
